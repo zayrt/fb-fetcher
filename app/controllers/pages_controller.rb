@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   require 'date'
 
-  before_action :set_graph, only: [:index, :show, :create]
+  before_action :set_graph, only: [:show, :create]
   
   def index
   	@pages = Page.all
