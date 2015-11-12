@@ -22,7 +22,7 @@ class PagesController < ApplicationController
 
   def show
   	@page = Page.find(params[:id])
-    @feeds = @graph.get_connections(@page.fb_id, "feed", :limit => 10)
+    @feeds = @graph.get_connections(@page.fb_id, "feed", {:limit => 10, fields: ['message', 'from', 'created_time']})
     @feeds.each do |f|
       f["created_time"] = DateTime.parse(f["created_time"]).strftime("%m/%d/%y %H:%M")
     end

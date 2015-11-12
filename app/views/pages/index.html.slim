@@ -1,6 +1,6 @@
 .container
    .row
-   		.col-md-3.col-md-offset-5
+   		.col-md-6.col-md-offset-3
         	h1 Pages fetcher !
          	= form_tag pages_path, :multipart => true do
           		= text_field_tag "id"
@@ -16,9 +16,9 @@ br
 					|
 					thead
 						tr
-							th IMAGE
-							th ID
-							th NAME
+							th Image
+							th Id
+							th Name
 					tbody
 						- @pages.each do | p |
 							tr

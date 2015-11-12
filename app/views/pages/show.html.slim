@@ -10,11 +10,13 @@
 					thead
 						tr
 							th Date
+							th From
 							th Message
 					tbody
 						- @feeds.each do | f |
 							tr
 								td = f["created_time"]
+								td = f["from"]["name"]
 								td = f["message"]
 
 						
