@@ -9,7 +9,7 @@
 							th Date
 							th Message
 					tbody
-						- @feeds[0..9].each do | f |
+						- @feeds.each do | f |
 							tr
 								td = f["created_time"]
 								td = f["message"]

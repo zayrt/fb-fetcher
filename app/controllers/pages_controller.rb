@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_graph, only: [:show, :create]
+  before_action :set_graph, only: [:index, :show, :create]
   
   def index
   	@pages = Page.all
@@ -7,19 +7,20 @@ class PagesController < ApplicationController
 
   def create
   	page = @graph.get_object(params[:id])
-  	p = Page.create(name: page['name'], fb_id: page['id'])
+  	page['image'] = @graph.get_picture(page['id'])
+    p = Page.create(name: page['name'], fb_id: page['id'], image: page['image'])
   	if p.errors.any?
   			redirect_to root_path, alert: p.errors.full_messages.join(". ")
   	else
   			redirect_to root_path, notice: "Votre page a bien été ajouté !"
   	end
-  rescue
+  rescue Exception => e
     redirect_to root_path, alert: "Page ID invalid"
   end
 
   def show
   	@page = Page.find(params[:id])
-    @feeds = @graph.get_connections(@page.fb_id, "feed")
+    @feeds = @graph.get_connections(@page.fb_id, "feed", :limit => 10)
   end
 
   private

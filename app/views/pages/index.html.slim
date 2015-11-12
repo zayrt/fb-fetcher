@@ -16,10 +16,12 @@ br
 					|
 					thead
 						tr
+							th IMAGE
 							th ID
 							th NAME
 					tbody
 						- @pages.each do | p |
 							tr
+								td = image_tag p.image
 								td = p.fb_id
 								td = link_to p.name, p

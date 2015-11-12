@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111102755) do
+ActiveRecord::Schema.define(version: 20151112220233) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "name"
     t.string   "fb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
 end
