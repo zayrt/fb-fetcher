@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#index'
+  
   post '/pages' => 'pages#create'
   get '/pages/:id', to: 'pages#show', as: 'page'
 
