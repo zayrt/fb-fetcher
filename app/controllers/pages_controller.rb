@@ -26,6 +26,5 @@ class PagesController < ApplicationController
     def set_graph
       oauth = Koala::Facebook::OAuth.new('1218085501541655', '1140d25bdf5c9062d49d2c66a07cde76')
       @graph = Koala::Facebook::API.new(oauth.get_app_access_token)
-      raise @graph.inspect
     end
 end
