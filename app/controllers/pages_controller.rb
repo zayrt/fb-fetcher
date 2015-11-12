@@ -3,6 +3,9 @@ class PagesController < ApplicationController
   
   def index
   	@pages = Page.all
+    if @pages.nil?
+      @pages = []
+    end
   end
 
   def create
