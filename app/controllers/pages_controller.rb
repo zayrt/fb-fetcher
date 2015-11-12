@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  require 'date'
+
   before_action :set_graph, only: [:index, :show, :create]
   
   def index
@@ -21,6 +23,9 @@ class PagesController < ApplicationController
   def show
   	@page = Page.find(params[:id])
     @feeds = @graph.get_connections(@page.fb_id, "feed", :limit => 10)
+    @feeds.each do |f|
+      f["created_time"] = DateTime.parse(f["created_time"]).strftime("%m/%d/%y %H:%M")
+    end
   end
 
   private
