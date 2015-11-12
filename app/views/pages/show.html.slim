@@ -1,0 +1,17 @@
+.container
+   .row
+   		.col-md-6.col-md-offset-3
+				h1 = @page.name
+				table.table.table-striped.table-bordered.table-hover
+					|
+					thead
+						tr
+							th Date
+							th Message
+					tbody
+						- @feeds[0..9].each do | f |
+							tr
+								td = f["created_time"]
+								td = f["message"]
+
+						
